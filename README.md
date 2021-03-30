@@ -12,7 +12,7 @@ DieL Viene de la pronunciación en inglés de las iniciales de la tienda de dona
 	Dentro del directorio anteriormente mencionado podrá encontrar el subdirectorio "routes" y dentro de él, el archivo "api.php", el cual contiene todas las rutas que se pueden visitar.
 	
 * Para iniciar sesión, utilizaremos el método login de la API Con alguno de los usuarios creados en la DB
- ![alt text](http://inisio_Sesion.png)
+ ![alt text](https://github.com/hectorfabiopv/DieL_Delivery_App/blob/main/inicio_Sesion.PNG)
 * [Maven](https://maven.apache.org/) - Manejador de dependencias
 * [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
 
