@@ -1,29 +1,26 @@
 # DieL_Delivery_App
 Aplicación móvil de la tienda Donuts Lapili para gestionar los pedidos de Donas.
 
+DieL Viene de la pronunciación en inglés de las iniciales de la tienda de donas (Donuts Lapili).
+
 # Entregables
 
 # A. Código fuente de las API’s y manual de uso
 
-	Ya se cuenta con el inicio de sesión de Jetstream (De manera provisional)
+	El código fuente del back de la aplicación se encuentra en el directorio "diel_app"
 
-	Los usuarios respectivamente son:
-
-	encargado@donutslapili.com
-
-	mensajero@donutslapili.com
-
-	cliente@donutslapilic.om
-
-	Para todos los usuarios la clave es: mambruNoFueALaGuerra2021;
-
-	Avance: Se crea el model y el controlador para ver los pedidos
-
-	Se insertan datos de prueba en la DB
-
-	Se crea el método para consultar TODOS Los pedidos en la API - Carpeta routes - Archivo api.php
+	Dentro del directorio anteriormente mencionado podrá encontrar el subdirectorio "routes" y dentro de él, el archivo "api.php", el cual contiene todas las rutas que se pueden visitar.
 
 
 # B. Base de Datos
 
 	Archivo "diel_delivery_app_db.sql"
+
+
+# Acerca de las tecnologías utilizadas
+
+	Este proyecto se realizó utilizando Laravel V8.34.0, así como también el paquete para la autenticación Laravel Sanctum (^2.6).
+
+	El front de la aplicación fue desarrollado en Angular V10.0.0.
+
+	El script de la base de datos fue hecho en Mysql, soportado por el servidor de base de datos MariaDB V10.4.13.
