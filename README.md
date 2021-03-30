@@ -13,15 +13,23 @@ DieL Viene de la pronunciación en inglés de las iniciales de la tienda de dona
 	
 * Para iniciar sesión, utilizaremos el método login de la API Con alguno de los usuarios creados en la DB, si el inicio de sesión es exitoso, se obtendrá un token de autenticación
  ![alt text](https://github.com/hectorfabiopv/DieL_Delivery_App/blob/main/inicio_Sesion.PNG)
-* Para ver los pedidos, se puede utilizar el método orders de la API, si este se realiza sin el token de autenticación anteriormente obtenido, no se podrá obtener el resultado
+* Para ver los pedidos (Literal A de la sección Encargado de punto de venta), se puede utilizar el método orders de la API, si este se realiza sin el token de autenticación anteriormente obtenido, no se podrá obtener el resultado
  ![alt text](https://github.com/hectorfabiopv/DieL_Delivery_App/blob/main/sin_Inicio_Sesion.PNG)
  
- Si utilizamos el token de autenticación podremos ver los pedidos
+ Si utilizamos el token de autenticación podremos ver los pedidos 
  ![alt text](https://github.com/hectorfabiopv/DieL_Delivery_App/blob/main/con_Inicio_Sesion.PNG)
  
  La estructura de la respuesta es la siguiente:
  ![alt text](https://github.com/hectorfabiopv/DieL_Delivery_App/blob/main/estructura_Ordenes.PNG)
-* 
+
+* Para ver la informacion de un pedido específico, podemos hacerlo pasándole el id del mismo, así:
+![alt text](https://github.com/hectorfabiopv/DieL_Delivery_App/blob/main/obtener_Orden_Especifica.PNG)
+
+* La manera de hacer un pedido es (Literal B de la sección de Cliente):
+![alt text](https://github.com/hectorfabiopv/DieL_Delivery_App/blob/main/hacer_Pedido.PNG)
+
+* Para actualizar el estado de un pedido (Literales C de la sección Cliente, B de la sección encargado de punto de venta y B de la sección Repartidor)
+![alt text](https://github.com/hectorfabiopv/DieL_Delivery_App/blob/main/actualizar_Estado_Orden.PNG)
 
 # B. Base de Datos
 
