@@ -11,7 +11,8 @@ DieL Viene de la pronunciación en inglés de las iniciales de la tienda de dona
 
 	Dentro del directorio anteriormente mencionado podrá encontrar el subdirectorio "routes" y dentro de él, el archivo "api.php", el cual contiene todas las rutas que se pueden visitar.
 	
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
+* Para iniciar sesión, utilizaremos el método login de la API Con alguno de los usuarios creados en la DB
+ ![alt text](http://inisio_Sesion.png)
 * [Maven](https://maven.apache.org/) - Manejador de dependencias
 * [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
 
