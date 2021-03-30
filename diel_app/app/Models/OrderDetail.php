@@ -17,10 +17,10 @@ class OrderDetail extends Model
         "amount"
     ];
 
-    public function order()
+    /*public function order()
     {
         return $this->belongsTo(Order::class, 'id_request');
-    }
+    }*/
 
     public function product()
     {

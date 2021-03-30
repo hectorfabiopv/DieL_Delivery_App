@@ -15,32 +15,41 @@ class OrderController extends Controller
 
         for ($i=0; $i < $sizeOrders; $i++) {
             $response[$i] = [
-                                $orders[$i],
+                                "order" => $orders[$i],
                                 "manager" => $orders[$i]->manager,
                                 "user_delivery" => $orders[$i]->user_delivery,
                                 "customer" => $orders[$i]->customer,
-                                "orders_details" => $orders[$i]->details
+                                "details" => $orders[$i]->details
                             ];
         }
 
         return response()->json($orders, 200);
     }
 
-    public function show(Order $order)
+    public function show($id_order)
     {
-        return $order;
+        $order = Order::find($id_order);
+        $response = [
+            "order" => $order,
+            "manager" => $order->manager,
+            "user_delivery" => $order->user_delivery,
+            "customer" => $order->customer,
+            "details" => $order->details
+        ];
+        return response()->json($response, 200);
     }
 
-    public function store(Order $order)
+    public function store(Request $order)
     {
         $order = Order::create($order->all());
         return response()->json($order, 201);
     }
 
-    public function update(Order $orderToUpdate, Order $dataOrder)
+    public function update(Request $dataOrder, $orderToUpdate)
     {
-        $orderToUpdate->update($dataOrder->all());
-        return response()->json($orderToUpdate, 200);
+        $order = Order::find($orderToUpdate);
+        $order->update($dataOrder->all());
+        return response()->json($order, 200);
     }
 
     public function delete(Order $order)

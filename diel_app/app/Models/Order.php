@@ -18,6 +18,7 @@ class Order extends Model
         "date_request",
         "state"
     ];
+    protected $hidden = ["created_at","updated_at"];
 
     public function manager()
     {
