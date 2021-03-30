@@ -10,7 +10,10 @@ DieL Viene de la pronunciación en inglés de las iniciales de la tienda de dona
 	El código fuente del back de la aplicación se encuentra en el directorio "diel_app"
 
 	Dentro del directorio anteriormente mencionado podrá encontrar el subdirectorio "routes" y dentro de él, el archivo "api.php", el cual contiene todas las rutas que se pueden visitar.
-
+	
+* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
+* [Maven](https://maven.apache.org/) - Manejador de dependencias
+* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
 
 # B. Base de Datos
 
