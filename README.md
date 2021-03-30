@@ -15,9 +15,13 @@ DieL Viene de la pronunciación en inglés de las iniciales de la tienda de dona
  ![alt text](https://github.com/hectorfabiopv/DieL_Delivery_App/blob/main/inicio_Sesion.PNG)
 * Para ver los pedidos, se puede utilizar el método orders de la API, si este se realiza sin el token de autenticación anteriormente obtenido, no se podrá obtener el resultado
  ![alt text](https://github.com/hectorfabiopv/DieL_Delivery_App/blob/main/sin_Inicio_Sesion.PNG)
+ 
  Si utilizamos el token de autenticación podremos ver los pedidos
  ![alt text](https://github.com/hectorfabiopv/DieL_Delivery_App/blob/main/con_Inicio_Sesion.PNG)
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
+ 
+ La estructura de la respuesta es la siguiente:
+ ![alt text](https://github.com/hectorfabiopv/DieL_Delivery_App/blob/main/estructura_Ordenes.PNG)
+* 
 
 # B. Base de Datos
 
