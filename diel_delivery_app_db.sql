@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-03-2021 a las 23:27:57
+-- Tiempo de generación: 30-03-2021 a las 02:27:24
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.4.8
 
@@ -24,6 +24,42 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` bigint(20) NOT NULL,
+  `id_manager` bigint(20) NOT NULL,
+  `id_user_delivery` bigint(20) NOT NULL,
+  `id_customer` bigint(20) NOT NULL,
+  `date_request` date NOT NULL DEFAULT current_timestamp(),
+  `state` varchar(20) NOT NULL COMMENT 'Estados: New, Sent, Cancelled, Delivered, Returned'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `orders`
+--
+
+INSERT INTO `orders` (`id`, `id_manager`, `id_user_delivery`, `id_customer`, `date_request`, `state`) VALUES
+(1, 1, 2, 3, '0000-00-00', 'New'),
+(2, 1, 2, 3, '0000-00-00', 'Delivered');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `orders_details`
+--
+
+CREATE TABLE `orders_details` (
+  `id` bigint(20) NOT NULL,
+  `id_request` bigint(20) NOT NULL,
+  `id_product` bigint(20) NOT NULL,
+  `amount` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `products`
 --
 
@@ -35,33 +71,13 @@ CREATE TABLE `products` (
   `value_unit` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `requests`
+-- Volcado de datos para la tabla `products`
 --
 
-CREATE TABLE `requests` (
-  `id` bigint(20) NOT NULL,
-  `id_manager` bigint(20) NOT NULL,
-  `id_user_delivery` bigint(20) NOT NULL,
-  `id_customer` bigint(20) NOT NULL,
-  `date_request` date NOT NULL DEFAULT current_timestamp(),
-  `state` varchar(20) NOT NULL COMMENT 'Estados: New, Sent, Cancelled, Delivered, Returned'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `requests_details`
---
-
-CREATE TABLE `requests_details` (
-  `id` bigint(20) NOT NULL,
-  `id_request` bigint(20) NOT NULL,
-  `id_product` bigint(20) NOT NULL,
-  `amount` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `products` (`id`, `title`, `image`, `description`, `value_unit`) VALUES
+(1, 'Clasica', 'C://', 'Clasica con endulzante natural', 10000),
+(2, 'Chocolate', 'C://', 'Sabor a chocolate ', 15000);
 
 -- --------------------------------------------------------
 
@@ -72,39 +88,49 @@ CREATE TABLE `requests_details` (
 CREATE TABLE `users_api` (
   `id` bigint(20) NOT NULL,
   `first_name` varchar(255) NOT NULL,
-  `last_name` int(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `rol` varchar(20) NOT NULL COMMENT 'Roles: customer, manager, user_delivery',
-  `phone_number` varchar(255) NOT NULL
+  `phone_number` varchar(255) NOT NULL,
+  `api_token` varchar(255) NOT NULL COMMENT 'Token para el inicio de sesión vía API'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `users_api`
+--
+
+INSERT INTO `users_api` (`id`, `first_name`, `last_name`, `email`, `password`, `rol`, `phone_number`, `api_token`) VALUES
+(1, 'Encargado', 'Tienda Donuts Lapili', 'encargado@donutslapili.com', '0101', 'manager', '0101', '0101'),
+(2, 'Mensajero', 'Tienda Donuts Lapili', 'mensajero@donutslapili.com', '0101', 'user_delivery', '0101', '0101'),
+(3, 'Cliente', 'Tienda Donuts Lapili', 'cliente@donutslapili.com', '0101', 'customer', '0101', '0101');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `products`
+-- Indices de la tabla `orders`
 --
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `requests`
---
-ALTER TABLE `requests`
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_manager` (`id_manager`),
   ADD KEY `id_user_delivery` (`id_user_delivery`),
   ADD KEY `id_customer` (`id_customer`);
 
 --
--- Indices de la tabla `requests_details`
+-- Indices de la tabla `orders_details`
 --
-ALTER TABLE `requests_details`
+ALTER TABLE `orders_details`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_request` (`id_request`),
   ADD KEY `id_product` (`id_product`);
+
+--
+-- Indices de la tabla `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `users_api`
@@ -118,47 +144,47 @@ ALTER TABLE `users_api`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `orders_details`
+--
+ALTER TABLE `orders_details`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `requests`
---
-ALTER TABLE `requests`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `requests_details`
---
-ALTER TABLE `requests_details`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `users_api`
 --
 ALTER TABLE `users_api`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `requests`
+-- Filtros para la tabla `orders`
 --
-ALTER TABLE `requests`
-  ADD CONSTRAINT `requests_ibfk_1` FOREIGN KEY (`id_manager`) REFERENCES `users_api` (`id`),
-  ADD CONSTRAINT `requests_ibfk_2` FOREIGN KEY (`id_user_delivery`) REFERENCES `users_api` (`id`),
-  ADD CONSTRAINT `requests_ibfk_3` FOREIGN KEY (`id_customer`) REFERENCES `users_api` (`id`);
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`id_manager`) REFERENCES `users_api` (`id`),
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`id_user_delivery`) REFERENCES `users_api` (`id`),
+  ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`id_customer`) REFERENCES `users_api` (`id`);
 
 --
--- Filtros para la tabla `requests_details`
+-- Filtros para la tabla `orders_details`
 --
-ALTER TABLE `requests_details`
-  ADD CONSTRAINT `requests_details_ibfk_1` FOREIGN KEY (`id_request`) REFERENCES `requests` (`id`),
-  ADD CONSTRAINT `requests_details_ibfk_2` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`);
+ALTER TABLE `orders_details`
+  ADD CONSTRAINT `orders_details_ibfk_1` FOREIGN KEY (`id_request`) REFERENCES `orders` (`id`),
+  ADD CONSTRAINT `orders_details_ibfk_2` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
