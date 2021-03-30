@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-Use App\Requests;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-Route::get('requests', function() {
-    // If the Content-Type and Accept headers are set to 'application/json',
-    // this will return a JSON structure. This will be cleaned up later.
-    return Requests::all();
-});
+Route::get("/orders",[OrderController::class,"index"])->name("orders");
+Route::get('orders/{orders}', 'OrderController@show');
+Route::post('orders', 'OrderController@store');
+Route::put('orders/{orders}', 'OrderController@update');
+Route::delete('orders/{orders}', 'OrderController@delete');
