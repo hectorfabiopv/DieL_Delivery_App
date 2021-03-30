@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get("/orders",[OrderController::class,"index"])->name("orders");
-Route::get('orders/{orders}', 'OrderController@show');
+Route::get("/orders/{orders}",[OrderController::class,"show"])->name("order_view");
 Route::post('orders', 'OrderController@store');
 Route::put('orders/{orders}', 'OrderController@update');
 Route::delete('orders/{orders}', 'OrderController@delete');

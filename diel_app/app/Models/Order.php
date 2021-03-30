@@ -18,4 +18,27 @@ class Order extends Model
         "date_request",
         "state"
     ];
+
+    public function manager()
+    {
+        return $this->belongsTo(UserApi::class, 'id_manager');
+    }
+
+
+    public function user_delivery()
+    {
+        return $this->belongsTo(UserApi::class, 'id_user_delivery');
+    }
+
+
+    public function customer()
+    {
+        return $this->belongsTo(UserApi::class, 'id_customer');
+    }
+
+
+    public function details()
+    {
+        return $this->hasMany(OrderDetail::class, 'id_request')->with("product");
+    }
 }
